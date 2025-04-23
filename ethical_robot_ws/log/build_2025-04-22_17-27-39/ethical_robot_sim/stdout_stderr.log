@@ -1,0 +1,72 @@
+running develop
+Removing /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical-robot-sim.egg-link (link to .)
+running egg_info
+writing ../../build/ethical_robot_sim/ethical_robot_sim.egg-info/PKG-INFO
+writing dependency_links to ../../build/ethical_robot_sim/ethical_robot_sim.egg-info/dependency_links.txt
+writing entry points to ../../build/ethical_robot_sim/ethical_robot_sim.egg-info/entry_points.txt
+writing requirements to ../../build/ethical_robot_sim/ethical_robot_sim.egg-info/requires.txt
+writing top-level names to ../../build/ethical_robot_sim/ethical_robot_sim.egg-info/top_level.txt
+reading manifest file '../../build/ethical_robot_sim/ethical_robot_sim.egg-info/SOURCES.txt'
+writing manifest file '../../build/ethical_robot_sim/ethical_robot_sim.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build
+creating /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib
+creating /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim
+copying ethical_robot_sim/decision_visualizer.py -> /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim
+copying ethical_robot_sim/robot_controller.py -> /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim
+copying ethical_robot_sim/perception.py -> /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim
+copying ethical_robot_sim/extended_robot_controller.py -> /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim
+copying ethical_robot_sim/secondary_decision_publisher.py -> /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim
+copying ethical_robot_sim/decision_engine.py -> /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim
+copying ethical_robot_sim/test_ethical_frameworks.py -> /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim
+copying ethical_robot_sim/auto_decision_maker.py -> /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim
+copying ethical_robot_sim/__init__.py -> /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim
+running install
+running install_lib
+creating /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim
+copying /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim/decision_visualizer.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim
+copying /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim/robot_controller.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim
+copying /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim/perception.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim
+copying /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim/extended_robot_controller.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim
+copying /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim/secondary_decision_publisher.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim
+copying /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim/decision_engine.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim
+copying /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim/test_ethical_frameworks.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim
+copying /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim/auto_decision_maker.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim
+copying /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build/lib/ethical_robot_sim/__init__.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim
+byte-compiling /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim/decision_visualizer.py to decision_visualizer.cpython-310.pyc
+byte-compiling /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim/robot_controller.py to robot_controller.cpython-310.pyc
+byte-compiling /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim/perception.py to perception.cpython-310.pyc
+byte-compiling /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim/extended_robot_controller.py to extended_robot_controller.cpython-310.pyc
+byte-compiling /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim/secondary_decision_publisher.py to secondary_decision_publisher.cpython-310.pyc
+byte-compiling /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim/decision_engine.py to decision_engine.cpython-310.pyc
+byte-compiling /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim/test_ethical_frameworks.py to test_ethical_frameworks.cpython-310.pyc
+byte-compiling /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim/auto_decision_maker.py to auto_decision_maker.cpython-310.pyc
+byte-compiling /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim/__init__.py to __init__.cpython-310.pyc
+running install_data
+copying resource/ethical_robot_sim -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ament_index/resource_index/packages
+copying package.xml -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim
+copying launch/improved_simulation.launch.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/launch
+copying launch/simulation.launch.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/launch
+copying urdf/ethical_robot.urdf.xacro -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/urdf
+copying urdf/ethical_robot.urdf.xacro:Zone.Identifier -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/urdf
+copying worlds/improved_dilemma_world.sdf -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/worlds
+copying worlds/dilemma_world.sdf:Zone.Identifier -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/worlds
+copying worlds/dilemma_world.sdf -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/worlds
+copying config/navigation_params.yaml -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/config
+copying config/nav.rviz:Zone.Identifier -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/config
+copying config/nav.rviz:Zone.Identifier:Zone.Identifier -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/config
+copying config/ethical_params.yaml:Zone.Identifier -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/config
+copying config/ethical_params.yaml -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/config
+copying config/nav.rviz:Zone.Identifier:Zone.Identifier:Zone.Identifier -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/config
+copying config/nav.rviz -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/config
+copying config/navigation_params.yaml:Zone.Identifier -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/config
+running install_egg_info
+Copying ../../build/ethical_robot_sim/ethical_robot_sim.egg-info to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical_robot_sim-0.1.0-py3.10.egg-info
+running install_scripts
+Installing auto_decision_maker script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+Installing decision_engine script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+Installing extended_robot_controller script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+Installing perception_node script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+Installing robot_controller script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+writing list of installed files to '/home/thaman/ethical_robot_ws/build/ethical_robot_sim/install.log'

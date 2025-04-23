@@ -1,0 +1,7 @@
+[console_scripts]
+auto_decision_maker = ethical_robot_sim.auto_decision_maker:main
+decision_engine = ethical_robot_sim.decision_engine:main
+extended_robot_controller = ethical_robot_sim.extended_robot_controller:main
+perception_node = ethical_robot_sim.perception:main
+robot_controller = ethical_robot_sim.robot_controller:main
+

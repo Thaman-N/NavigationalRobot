@@ -1,0 +1,24 @@
+[0.627s] Invoking command in '/home/thaman/ethical_robot_ws/build/ethical_robot_sim': PYTHONPATH=/home/thaman/ethical_robot_ws/build/ethical_robot_sim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build --no-deps symlink_data
+[0.843s] running develop
+[0.990s] running egg_info
+[0.990s] writing ethical_robot_sim.egg-info/PKG-INFO
+[0.990s] writing dependency_links to ethical_robot_sim.egg-info/dependency_links.txt
+[0.991s] writing entry points to ethical_robot_sim.egg-info/entry_points.txt
+[0.991s] writing requirements to ethical_robot_sim.egg-info/requires.txt
+[0.991s] writing top-level names to ethical_robot_sim.egg-info/top_level.txt
+[0.993s] reading manifest file 'ethical_robot_sim.egg-info/SOURCES.txt'
+[0.994s] writing manifest file 'ethical_robot_sim.egg-info/SOURCES.txt'
+[0.995s] running build_ext
+[0.996s] Creating /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical-robot-sim.egg-link (link to .)
+[0.996s] Installing auto_decision_maker script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+[0.996s] Installing decision_engine script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+[0.997s] Installing extended_robot_controller script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+[0.997s] Installing fast_robot_controller script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+[0.997s] Installing perception_node script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+[0.997s] Installing robot_controller script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+[0.997s] 
+[0.998s] Installed /home/thaman/ethical_robot_ws/build/ethical_robot_sim
+[0.998s] running symlink_data
+[0.999s] symbolically linking /home/thaman/ethical_robot_ws/build/ethical_robot_sim/launch/fixed_simulation.launch.py -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/launch
+[1.001s] symbolically linking /home/thaman/ethical_robot_ws/build/ethical_robot_sim/worlds/fixed_dilemma_world.sdf -> /home/thaman/ethical_robot_ws/install/ethical_robot_sim/share/ethical_robot_sim/worlds
+[1.033s] Invoked command in '/home/thaman/ethical_robot_ws/build/ethical_robot_sim' returned '0': PYTHONPATH=/home/thaman/ethical_robot_ws/build/ethical_robot_sim/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/thaman/ethical_robot_ws/build/ethical_robot_sim/build --no-deps symlink_data

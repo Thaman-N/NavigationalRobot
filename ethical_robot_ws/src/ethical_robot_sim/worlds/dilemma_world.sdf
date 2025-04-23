@@ -1,0 +1,1677 @@
+<?xml version="1.0" ?>
+<sdf version="1.7">
+  <world name="ethical_dilemma_world">
+    <!-- Physics settings -->
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    
+    <!-- Better environment lighting -->
+    <light type="directional" name="sun">
+      <cast_shadows>true</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    
+    <!-- Ambient light to prevent areas from being too dark -->
+    <light type="directional" name="ambient">
+      <cast_shadows>false</cast_shadows>
+      <pose>0 0 10 0 0 0</pose>
+      <diffuse>0.3 0.3 0.3 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>0 0 -1</direction>
+    </light>
+    
+    <!-- Sky and atmosphere for better visuals -->
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.8 0.9 1</background>
+      <shadows>true</shadows>
+    </scene>
+    
+    <!-- Enhanced ground plane with grass texture -->
+    <model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+            </friction>
+          </surface>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <ambient>0.3 0.5 0.3 1</ambient>
+            <diffuse>0.3 0.5 0.3 1</diffuse>
+            <specular>0 0 0 1</specular>
+            <emissive>0 0 0 1</emissive>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Main road with better texturing -->
+    <model name="main_road">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10.0 2.0 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10.0 2.0 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0.2 0.2 0.2 1</diffuse>
+            <specular>0.05 0.05 0.05 1</specular>
+          </material>
+        </visual>
+        <!-- Road markings - center line -->
+        <visual name="center_line">
+          <geometry>
+            <box>
+              <size>10.0 0.05 0.015</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 0.0 1</ambient>
+            <diffuse>1.0 1.0 0.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+      <pose>0 0 0.005 0 0 0</pose>
+    </model>
+    
+    <!-- Forked road - Area 1 (many people, longer rescue time) with road markings -->
+    <model name="road_fork_1">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>8.0 2.0 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>8.0 2.0 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0.2 0.2 0.2 1</diffuse>
+            <specular>0.05 0.05 0.05 1</specular>
+          </material>
+        </visual>
+        <!-- Road markings - center line -->
+        <visual name="center_line">
+          <pose>0 0 0.005 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>8.0 0.05 0.015</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 0.0 1</ambient>
+            <diffuse>1.0 1.0 0.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+      <pose>8.0 3.0 0.005 0 0 0.785398</pose> <!-- 45 degrees -->
+    </model>
+    
+    <!-- Forked road - Area 2 (fewer people, quicker rescue time) with road markings -->
+    <model name="road_fork_2">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>5.0 2.0 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>5.0 2.0 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0.2 0.2 0.2 1</diffuse>
+            <specular>0.05 0.05 0.05 1</specular>
+          </material>
+        </visual>
+        <!-- Road markings - center line -->
+        <visual name="center_line">
+          <pose>0 0 0.005 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>5.0 0.05 0.015</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 0.0 1</ambient>
+            <diffuse>1.0 1.0 0.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+      <pose>8.0 -3.0 0.005 0 0 -0.785398</pose> <!-- -45 degrees -->
+    </model>
+    
+    <!-- NEW: Secondary fork from Area 1 path to Area 4 -->
+    <model name="road_fork_area4">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>4.0 2.0 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>4.0 2.0 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0.2 0.2 0.2 1</diffuse>
+            <specular>0.05 0.05 0.05 1</specular>
+          </material>
+        </visual>
+        <!-- Road markings - center line -->
+        <visual name="center_line">
+          <pose>0 0 0.005 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>4.0 0.05 0.015</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 0.0 1</ambient>
+            <diffuse>1.0 1.0 0.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+      <pose>8.0 5.5 0.005 0 0 1.5708</pose> <!-- 90 degrees (north) -->
+    </model>
+    
+    <!-- NEW: Road to Area 3 (continues straight from Area 2 path) -->
+    <model name="road_fork_area3">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>10.0 2.0 0.01</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>10.0 2.0 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.2 0.2 1</ambient>
+            <diffuse>0.2 0.2 0.2 1</diffuse>
+            <specular>0.05 0.05 0.05 1</specular>
+          </material>
+        </visual>
+        <!-- Road markings - center line -->
+        <visual name="center_line">
+          <pose>0 0 0.005 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>10.0 0.05 0.015</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 0.0 1</ambient>
+            <diffuse>1.0 1.0 0.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+      <pose>12.0 -1.0 0.005 0 0 0</pose> <!-- Straight east -->
+    </model>
+    
+    <!-- Decision fork indicator improved -->
+    <model name="decision_point">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.5</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 0.0 1</ambient>
+            <diffuse>1.0 1.0 0.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0.1 0.1 0 1</emissive>
+          </material>
+        </visual>
+        <visual name="symbol">
+          <pose>0 0 0.051 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.4 0.025 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+        <visual name="symbol_2">
+          <pose>0 0 0.051 0 0 1.5708</pose>
+          <geometry>
+            <box>
+              <size>0.4 0.025 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>5.0 0 0.05 0 0 0</pose>
+    </model>
+    
+    <!-- NEW: Secondary decision point on way to Area 1 -->
+    <model name="secondary_decision_point_area1">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.0 1.0 1.0 1</ambient>
+            <diffuse>0.0 1.0 1.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0.0 0.1 0.1 1</emissive>
+          </material>
+        </visual>
+        <visual name="symbol">
+          <pose>0 0 0.051 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.25 0.025 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+        <visual name="symbol_2">
+          <pose>0 0 0.051 0 0 1.5708</pose>
+          <geometry>
+            <box>
+              <size>0.25 0.025 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>8.0 3.0 0.05 0 0 0</pose>
+    </model>
+    
+    <!-- NEW: Secondary decision point on way to Area 2 -->
+    <model name="secondary_decision_point_area2">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.0 1.0 1.0 1</ambient>
+            <diffuse>0.0 1.0 1.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0.0 0.1 0.1 1</emissive>
+          </material>
+        </visual>
+        <visual name="symbol">
+          <pose>0 0 0.051 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.25 0.025 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+        <visual name="symbol_2">
+          <pose>0 0 0.051 0 0 1.5708</pose>
+          <geometry>
+            <box>
+              <size>0.25 0.025 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>7.0 -3.0 0.05 0 0 0</pose>
+    </model>
+    
+    <!-- Area 1 scenery - More people (5 people) -->
+    <model name="person_area1_1">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>12.0 6.0 0 0 0 0</pose>
+      </include>
+    </model>
+    
+    <model name="person_area1_2">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>11.5 6.5 0 0 0 0.5</pose>
+      </include>
+    </model>
+    
+    <model name="person_area1_3">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>12.5 5.5 0 0 0 -0.3</pose>
+      </include>
+    </model>
+    
+    <model name="person_area1_4">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>13.0 7.0 0 0 0 1.5</pose>
+      </include>
+    </model>
+    
+    <model name="person_area1_5">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>11.0 7.0 0 0 0 -1.0</pose>
+      </include>
+    </model>
+    
+    <!-- Area 2 scenery - Fewer people (2 people) -->
+    <model name="person_area2_1">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>10.0 -5.0 0 0 0 0</pose>
+      </include>
+    </model>
+    
+    <model name="person_area2_2">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>10.5 -5.5 0 0 0 0.7</pose>
+      </include>
+    </model>
+    
+    <!-- NEW: Area 3 scenery - Medical emergency (3 people) -->
+    <model name="person_area3_1">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>15.0 0.0 0 0 0 0</pose>
+      </include>
+    </model>
+    
+    <model name="person_area3_2">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>15.5 0.5 0 0 0 0.3</pose>
+      </include>
+    </model>
+    
+    <model name="person_area3_3">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>14.7 -0.8 0 0 0 -0.5</pose>
+      </include>
+    </model>
+    
+    <!-- NEW: Medical equipment for Area 3 -->
+    <model name="medical_equipment">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.8 0.8 0.8</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.8 0.8 0.8</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="cross">
+          <pose>0 0.401 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>16.0 -0.5 0.4 0 0 0</pose>
+    </model>
+    
+    <!-- NEW: Area 4 scenery - Child safety (4 children) -->
+    <model name="child_area4_1">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>8.0 10.0 0 0 0 0</pose>
+        <scale>0.7 0.7 0.7</scale>
+      </include>
+    </model>
+    
+    <model name="child_area4_2">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>8.5 10.5 0 0 0 0.4</pose>
+        <scale>0.7 0.7 0.7</scale>
+      </include>
+    </model>
+    
+    <model name="child_area4_3">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>7.5 9.5 0 0 0 -0.2</pose>
+        <scale>0.7 0.7 0.7</scale>
+      </include>
+    </model>
+    
+    <model name="child_area4_4">
+      <include>
+        <uri>model://person_standing</uri>
+        <pose>9.0 9.8 0 0 0 1.2</pose>
+        <scale>0.7 0.7 0.7</scale>
+      </include>
+    </model>
+    
+    <!-- NEW: School building for Area 4 -->
+    <model name="school_building">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>4.0 3.0 2.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>4.0 3.0 2.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.5 0.2 1</ambient>
+            <diffuse>0.8 0.5 0.2 1</diffuse>
+          </material>
+        </visual>
+        <!-- School sign -->
+        <visual name="sign">
+          <pose>0 1.501 0.5 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>1.5 0.01 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.6 1.0 1</ambient>
+            <diffuse>0.2 0.6 1.0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>9.0 12.0 1.25 0 0 0</pose>
+    </model>
+    
+    <!-- Enhanced Signs with better text -->
+    <model name="area1_sign">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 1.0 1</ambient>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="text">
+          <pose>0 -0.006 0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.55 0.001 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="text2">
+          <pose>0 -0.006 -0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.5 0.001 0.08</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.1 0.1 1</ambient>
+            <diffuse>0.8 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>7.0 2.0 1.0 0 0 0.785398</pose>
+    </model>
+    
+    <model name="area2_sign">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 1.0 1</ambient>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="text">
+          <pose>0 -0.006 0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.55 0.001 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="text2">
+          <pose>0 -0.006 -0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.5 0.001 0.08</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.6 0.1 1</ambient>
+            <diffuse>0.1 0.6 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>7.0 -2.0 1.0 0 0 -0.785398</pose>
+    </model>
+    
+    <!-- NEW: Area 3 sign (Hospital) -->
+    <model name="area3_sign">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 1.0 1</ambient>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="text">
+          <pose>0 -0.006 0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.55 0.001 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="text2">
+          <pose>0 -0.006 -0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.5 0.001 0.08</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.8 0.1 0.1 1</ambient>
+            <diffuse>0.8 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>11.0 -2.0 1.0 0 0 0</pose>
+    </model>
+    
+    <!-- NEW: Area 4 sign (School) -->
+    <model name="area4_sign">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 1.0 1</ambient>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        <visual name="text">
+          <pose>0 -0.006 0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.55 0.001 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="text2">
+          <pose>0 -0.006 -0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.5 0.001 0.08</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.2 0.5 0.8 1</ambient>
+            <diffuse>0.2 0.5 0.8 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.5</size>
+            </box>
+          </geometry>
+        </collision>
+      </link>
+      <pose>7.0 6.0 1.0 0 0 1.5708</pose>
+    </model>
+    
+    <!-- Sign poles with better material -->
+    <model name="area1_sign_pole">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+      </link>
+      <pose>7.0 2.0 0.5 0 0 0</pose>
+    </model>
+    
+    <model name="area2_sign_pole">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+      </link>
+      <pose>7.0 -2.0 0.5 0 0 0</pose>
+    </model>
+    
+    <!-- NEW: Sign poles for new areas -->
+    <model name="area3_sign_pole">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+      </link>
+      <pose>11.0 -2.0 0.5 0 0 0</pose>
+    </model>
+    
+    <model name="area4_sign_pole">
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+            <specular>0.2 0.2 0.2 1</specular>
+          </material>
+        </visual>
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+      </link>
+      <pose>7.0 6.0 0.5 0 0 0</pose>
+    </model>
+    
+    <!-- Area 1 obstacle (making rescue harder/longer) - Enhanced to look like collapsed wall -->
+    <model name="area1_obstacle">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>3.0 0.5 1.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>3.0 0.5 1.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.65 0.35 0.15 1</ambient>
+            <diffuse>0.65 0.35 0.15 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+      </link>
+      <pose>10.0 5.0 0.5 0 0 0.785398</pose>
+    </model>
+    
+    <!-- Add environmental elements: trees -->
+    <model name="tree1">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision_foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.1 0.5 0.1 1</ambient>
+            <diffuse>0.1 0.5 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-2 4 0 0 0 0</pose>
+    </model>
+    
+    <model name="tree2">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision_foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.1 0.5 0.1 1</ambient>
+            <diffuse>0.1 0.5 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-3 -3 0 0 0 0</pose>
+    </model>
+    
+    <model name="tree3">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision_foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.1 0.5 0.1 1</ambient>
+            <diffuse>0.1 0.5 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>14 2 0 0 0 0</pose>
+    </model>
+    
+    <model name="tree4">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision_foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.1 0.5 0.1 1</ambient>
+            <diffuse>0.1 0.5 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>13 -7 0 0 0 0</pose>
+    </model>
+    
+    <!-- NEW: Trees for Area 4 (school) -->
+    <model name="tree5">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision_foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.1 0.5 0.1 1</ambient>
+            <diffuse>0.1 0.5 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>6 9 0 0 0 0</pose>
+    </model>
+    
+    <model name="tree6">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision_trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="trunk">
+          <pose>0 0 1.5 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.15</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.5 0.3 0.1 1</ambient>
+            <diffuse>0.5 0.3 0.1 1</diffuse>
+          </material>
+        </visual>
+        <collision name="collision_foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="foliage">
+          <pose>0 0 4 0 0 0</pose>
+          <geometry>
+            <sphere>
+              <radius>1.0</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.1 0.5 0.1 1</ambient>
+            <diffuse>0.1 0.5 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>11 11 0 0 0 0</pose>
+    </model>
+    
+    <!-- Add some first responder vehicles near Area 2 -->
+    <model name="emergency_vehicle">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>2.5 1.2 1.0</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="body">
+          <geometry>
+            <box>
+              <size>2.5 1.2 1.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 1.0 1</ambient>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+          </material>
+        </visual>
+        <!-- Red stripe on vehicle -->
+        <visual name="stripe">
+          <pose>0 0 0.1 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>2.52 1.22 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 0.0 0.0 1</ambient>
+            <diffuse>1.0 0.0 0.0 1</diffuse>
+          </material>
+        </visual>
+        <!-- Wheels -->
+        <visual name="wheel1">
+          <pose>-0.7 0.6 -0.4 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="wheel2">
+          <pose>0.7 0.6 -0.4 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="wheel3">
+          <pose>-0.7 -0.6 -0.4 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="wheel4">
+          <pose>0.7 -0.6 -0.4 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>6 -7 0.5 0 0 -0.5</pose>
+    </model>
+    
+    <!-- NEW: Hospital vehicle for Area 3 -->
+    <model name="hospital_vehicle">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>3.0 1.5 1.5</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="body">
+          <geometry>
+            <box>
+              <size>3.0 1.5 1.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 1.0 1.0 1</ambient>
+            <diffuse>1.0 1.0 1.0 1</diffuse>
+          </material>
+        </visual>
+        <!-- Red cross on vehicle -->
+        <visual name="cross1">
+          <pose>-1.0 0.76 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 0.0 0.0 1</ambient>
+            <diffuse>1.0 0.0 0.0 1</diffuse>
+          </material>
+        </visual>
+        <visual name="cross2">
+          <pose>1.0 0.76 0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.6 0.01 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 0.0 0.0 1</ambient>
+            <diffuse>1.0 0.0 0.0 1</diffuse>
+          </material>
+        </visual>
+        <!-- Wheels -->
+        <visual name="wheel1">
+          <pose>-1.0 0.75 -0.65 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.35</radius>
+              <length>0.15</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="wheel2">
+          <pose>1.0 0.75 -0.65 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.35</radius>
+              <length>0.15</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="wheel3">
+          <pose>-1.0 -0.75 -0.65 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.35</radius>
+              <length>0.15</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="wheel4">
+          <pose>1.0 -0.75 -0.65 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.35</radius>
+              <length>0.15</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>17 -1 0.75 0 0 -0.2</pose>
+    </model>
+    
+    <!-- NEW: School Bus for Area 4 -->
+    <model name="school_bus">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>4.0 1.8 1.8</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="body">
+          <geometry>
+            <box>
+              <size>4.0 1.8 1.8</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1.0 0.8 0.0 1</ambient>
+            <diffuse>1.0 0.8 0.0 1</diffuse>
+          </material>
+        </visual>
+        <!-- Windows -->
+        <visual name="windows">
+          <pose>0 0 0.3 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>3.8 1.6 0.6</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.1 0.3 0.5 0.6</ambient>
+            <diffuse>0.1 0.3 0.5 0.6</diffuse>
+          </material>
+        </visual>
+        <!-- Wheels -->
+        <visual name="wheel1">
+          <pose>-1.5 0.9 -0.7 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>0.2</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="wheel2">
+          <pose>1.5 0.9 -0.7 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>0.2</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="wheel3">
+          <pose>-1.5 -0.9 -0.7 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>0.2</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+        <visual name="wheel4">
+          <pose>1.5 -0.9 -0.7 1.57 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>0.2</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.1 0.1 0.1 1</ambient>
+            <diffuse>0.1 0.1 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>6 13 0.9 0 0 -0.3</pose>
+    </model>
+    
+    <!-- Add some rocks and natural elements -->
+    <model name="rock1">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <sphere>
+              <radius>0.4</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.4</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>2 3 0.2 0 0 0</pose>
+    </model>
+    
+    <model name="rock2">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <sphere>
+              <radius>0.3</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.3</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-1 -2 0.15 0 0 0</pose>
+    </model>
+    
+    <!-- Add some bushes for environment detailing -->
+    <model name="bush1">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.5</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.1 0.4 0.1 1</ambient>
+            <diffuse>0.1 0.4 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>4 3 0.25 0 0 0</pose>
+    </model>
+    
+    <model name="bush2">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <sphere>
+              <radius>0.4</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.4</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.1 0.4 0.1 1</ambient>
+            <diffuse>0.1 0.4 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>-2 -4 0.2 0 0 0</pose>
+    </model>
+    
+    <model name="bush3">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <sphere>
+              <radius>0.6</radius>
+            </sphere>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <sphere>
+              <radius>0.6</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0.1 0.5 0.1 1</ambient>
+            <diffuse>0.1 0.5 0.1 1</diffuse>
+          </material>
+        </visual>
+      </link>
+      <pose>9 -7 0.3 0 0 0</pose>
+    </model>
+  </world>
+</sdf>

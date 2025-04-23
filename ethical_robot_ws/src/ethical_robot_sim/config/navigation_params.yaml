@@ -1,0 +1,22 @@
+/**:
+  ros__parameters:
+    # Robot movement parameters
+    linear_speed: 1.0               # Maximum linear speed (m/s)
+    angular_speed: 1.2              # Maximum angular speed (rad/s)
+    
+    # Obstacle avoidance parameters
+    obstacle_threshold: 0.5         # Distance for obstacle detection (m)
+    
+    # Navigation parameters
+    goal_tolerance: 0.2             # Distance to consider goal reached (m)
+    
+    # Locations
+    decision_point_x: 5.0           # X coordinate of decision point
+    decision_point_y: 0.0           # Y coordinate of decision point
+    decision_radius: 1.0            # Radius to consider at decision point
+    
+    area1_x: 12.0                   # X coordinate of Area 1 center
+    area1_y: 6.0                    # Y coordinate of Area 1 center
+    
+    area2_x: 10.0                   # X coordinate of Area 2 center
+    area2_y: -5.0                   # Y coordinate of Area 2 center

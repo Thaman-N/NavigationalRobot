@@ -1,0 +1,19 @@
+running develop
+running egg_info
+writing ethical_robot_sim.egg-info/PKG-INFO
+writing dependency_links to ethical_robot_sim.egg-info/dependency_links.txt
+writing entry points to ethical_robot_sim.egg-info/entry_points.txt
+writing requirements to ethical_robot_sim.egg-info/requires.txt
+writing top-level names to ethical_robot_sim.egg-info/top_level.txt
+reading manifest file 'ethical_robot_sim.egg-info/SOURCES.txt'
+writing manifest file 'ethical_robot_sim.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/python3.10/site-packages/ethical-robot-sim.egg-link (link to .)
+Installing decision_engine script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+Installing extended_robot_controller script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+Installing perception_node script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+Installing robot_controller script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+Installing secondary_decision_publisher script to /home/thaman/ethical_robot_ws/install/ethical_robot_sim/lib/ethical_robot_sim
+
+Installed /home/thaman/ethical_robot_ws/build/ethical_robot_sim
+running symlink_data

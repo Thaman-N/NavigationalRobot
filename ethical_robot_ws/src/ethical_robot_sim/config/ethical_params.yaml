@@ -1,0 +1,17 @@
+/**:
+  ros__parameters:
+    # Ethical framework to use:
+    # UTILITARIAN: Greatest good for greatest number
+    # KANTIAN: Act according to universal principles
+    # CARE_ETHICS: Prioritize care and relationships
+    # VIRTUE_ETHICS: Act as a virtuous agent would
+    # CUSTOM: Custom weighted approach
+    ethical_framework: "UTILITARIAN"
+    
+    # Utilitarian parameters
+    utilitarian_people_weight: 0.7   # Weight for the number of people
+    utilitarian_time_weight: 0.3     # Weight for rescue time
+    
+    # Decision parameters
+    decision_threshold: 0.1          # Threshold for considering options equal
+    uncertainty_tolerance: 0.2       # Tolerance for uncertainty in perception
